@@ -1,4 +1,4 @@
-from implementation.abstraction import FilePath, InferenceResult
+from .abstraction import FilePath, InferenceResult
 from .abstraction import ModelBuilder, Model
 import pathlib
 
@@ -19,7 +19,7 @@ class ModelImplementation(Model):
 class ModelBuilderImplementation(ModelBuilder):
     
     def build(self, model_file_paths: list[str]) -> Model:
-        
+
         # building of the model happens here
 
         return ModelImplementation()
