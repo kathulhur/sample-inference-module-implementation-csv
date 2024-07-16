@@ -6,19 +6,19 @@ MODULE_DIR = pathlib.Path(__file__).parent
 
 class ModelImplementation(Model):
 
-    def infer(self, input_file_paths: list[str]) -> InferenceResult:
+    def infer(self, input_file_paths: list[str], *args, **kwargs) -> InferenceResult:
 
         # inference happens here
 
         return {
-            'data': str(MODULE_DIR) / 'assets' / 'sample.csv',
+            'output': str(MODULE_DIR / 'assets' / 'sample.csv'),
             'type': 'application/csv',
             'info': {},
         }
     
 class ModelBuilderImplementation(ModelBuilder):
     
-    def build(self, model_file_paths: list[str]) -> Model:
+    def build(self, model_file_paths: list[str], *args, **kwargs) -> Model:
 
         # building of the model happens here
 
@@ -26,7 +26,7 @@ class ModelBuilderImplementation(ModelBuilder):
     
 
 
-builder_class = ModelBuilderImplementation
+model_builder_class = ModelBuilderImplementation
 
 
 inference_metadata = {

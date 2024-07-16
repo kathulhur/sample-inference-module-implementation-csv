@@ -8,7 +8,7 @@ FilePath = str
 
 
 InferenceResult = TypedDict('InferenceResult', {
-    'data': FilePath,
+    'output': FilePath,
 
     # The Media type of the data
     #   Refer to this: https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types and https://www.iana.org/assignments/media-types/media-types.xhtml
@@ -30,7 +30,7 @@ class Model:
       An object that can infer or predict
       Contains every knowledge about performing the inference given an input
     """
-    def infer(self, input_file_paths: list[FilePath]) -> InferenceResult:
+    def infer(self, input_file_paths: list[FilePath], *args, **kwargs) -> InferenceResult:
         raise NotImplementedError()
     
 
@@ -39,7 +39,7 @@ class ModelBuilder:
         An object that can build the inference model given a list of model artifacts
         contains every logic that it needs to build the model
     """
-    def build(self, model_file_paths: list[FilePath]) -> Model:
+    def build(self, model_file_paths: list[FilePath], *args, **kwargs) -> Model:
         raise NotImplementedError()
 
    
